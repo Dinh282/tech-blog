@@ -19,13 +19,17 @@ Blog.init(
         type: DataTypes.STRING,
         allowNull: false,
       },
-    starting_date: {
+    date_created: {
       type: DataTypes.DATE,
       allowNull: false,
+      defaultValue: DataTypes.NOW,
     },
-    ending_date: {
-      type: DataTypes.DATE,
-      allowNull: false,
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'user',
+        key: 'id',
+      },
     },
   },
   {

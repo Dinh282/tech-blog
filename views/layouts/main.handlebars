@@ -5,29 +5,43 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tech Blog</title>
+  <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@2.51.6/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    >
   <link rel="stylesheet" type="text/css" href="/css/jass.css">
   <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 
 <body>
-  
-  <nav>
-    <a href="/">Home</a>
-    <a href="/">Dashboard</a>
-    {{#if loggedIn}}
-    <button id="logout" class="btn-no-style">Logout</button>
-    {{else}}
-    <a href="/login">Login</a>
-    {{/if}}
-  </nav>
+    <main class="bg-blue-200 h-screen">
+    <div class="bg-stone-900 p-4">
+        <nav>
+            <a href="/">Home</a>
+            <a href="/">Dashboard</a>
+            {{#if loggedIn}}
+            <button id="logout" class="btn-no-style">Logout</button>
+            {{else}}
+            <a href="/login">Login</a>
+            {{/if}}
+        </nav>
 
-  <header>
-    <h1>The Tech Blog</h1>
-  </header>
+        <header>
+            <h1>The Tech Blog</h1>
+        </header>
+    </div>
+    
+    {{{ body }}}
+
+    </main>
 
   {{#if loggedIn}}
   <script src="/js/logout.js"></script>
   {{/if}}
+
+
+  <script src="https://cdn.tailwindcss.com"></script>
 </body>
 
 </html>

@@ -1,14 +1,14 @@
 
 const router = require('express').Router();
-const { Blog, User } = require('../models');
+const { Post, User } = require('../models');
 // Import the custom middleware
 const withAuth = require('../utils/auth');
 
-// GET all blogs for homepage
+// GET all posts for homepage
 router.get('/', async (req, res) => {
   try {
     
-    const dbBlogData = await Blog.findAll({
+    const dbPostData = await Post.findAll({
       include: [
         {
           model: User,
@@ -17,12 +17,12 @@ router.get('/', async (req, res) => {
       ],
     });
 
-    const blogs = dbBlogData.map((blog) =>
-      blog.get({ plain: true })
+    const posts = dbPostData.map((post) =>
+      post.get({ plain: true })
     );
 
     res.render('homepage', {
-      blogs,
+      posts,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
@@ -32,5 +32,35 @@ router.get('/', async (req, res) => {
 });
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Get route to see if user is logged in, if not show them the login page.
+router.get('/login', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+
+  res.render('login');
+});
 
 module.exports = router;

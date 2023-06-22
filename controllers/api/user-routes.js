@@ -11,6 +11,7 @@ router.post('/', async (req, res) => {
 
     req.session.save(() => {
       req.session.loggedIn = true;
+      req.session.user_id = dbUserDatauserData.id;
 
       res.status(200).json(dbUserData);
     });
@@ -25,7 +26,7 @@ router.post('/login', async (req, res) => {
   try {
     const dbUserData = await User.findOne({
       where: {
-        id: req.body.id,
+        username: req.body.username,
       },
     });
 
@@ -47,6 +48,7 @@ router.post('/login', async (req, res) => {
 
     req.session.save(() => {
       req.session.loggedIn = true;
+      req.session.user_id = dbUserDatauserData.id;
 
       res
         .status(200)

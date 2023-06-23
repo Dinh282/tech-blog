@@ -19,7 +19,7 @@
     <div class="bg-stone-900 p-4">
         <nav>
             <a href="/">Home</a>
-            <a href="/">Dashboard</a>
+            <a href="{{#if loggedIn}}/dashboard{{else}}/login{{/if}}">Dashboard</a>
             {{#if loggedIn}}
               <button id="logout" class="btn-no-style">Logout</button>
             {{else}}
@@ -28,7 +28,7 @@
         </nav>
 
         <header>
-            <h1>The Tech Blog</h1>
+            <h1>{{#if loggedIn}}Dashboard{{else}}The Tech Blog{{/if}}</h1>
         </header>
     </div>
     

@@ -1,0 +1,16 @@
+{{#if posts.length}}
+    <ul>
+      {{#each posts}}
+        <li>{{this.title}}</li>
+      {{/each}}
+    </ul>
+  {{else}}
+    <p>You haven't made any posts yet. Click the Create New Post button below to start one.</p>
+  {{/if}}
+
+
+ <div class="fixed bottom-0 left-0 right-0 flex justify-center p-4 bg-gray-100">
+    <div class="max-w-screen-lg">
+      <a href="/dashboard/new" class="btn">Create New Post</a>
+    </div>
+  </div>

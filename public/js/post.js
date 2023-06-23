@@ -2,8 +2,9 @@ const newPostHandler = async (event) => {
     event.preventDefault();
   
     const title = document.querySelector('#post-name').value.trim();
-    const content = document.querySelector('#project-desc').value.trim();
+    const content = document.querySelector('#post-desc').value.trim();
   
+   
     if (title && content) {
       const response = await fetch(`/api/posts`, {
         method: 'POST',
@@ -15,6 +16,7 @@ const newPostHandler = async (event) => {
   
       if (response.ok) {
         document.location.replace('/dashboard');
+        
       } else {
         alert('Failed to create a new post');
       }

@@ -65,7 +65,11 @@ router.get('/dashboard', async (req, res) => {
 
 // GET Render the new post form
 router.get('/dashboard/new', (req, res) => {
-  res.render('post');
+  if (req.session.loggedIn){
+  res.render('post', {loggedIn: true});
+  return;
+  }
+  res.render('login')
 });
 
 

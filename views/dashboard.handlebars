@@ -1,16 +1,21 @@
+
 {{#if posts.length}}
-    <ul>
-      {{#each posts}}
-        <li>{{this.title}}</li>
-      {{/each}}
-    </ul>
-  {{else}}
-    <p>You haven't made any posts yet. Click the Create New Post button below to start one.</p>
-  {{/if}}
+  <ul class="space-y-4 py-3 px-4">
+    {{#each posts}}
+      <li>
+        <a href="/dashboard/edit/{{this.id}}" class="btn flex items-center justify-between">
+          <span class="mr-2">{{this.title}}</span>
+          <span class="text-sm">{{format_date this.createdAt}}</span>
+        </a>
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>You haven't made any posts yet. Click the Create New Post button below to start one.</p>
+{{/if}}
 
-
- <div class="fixed bottom-0 left-0 right-0 flex justify-center p-4 bg-gray-100">
-    <div class="max-w-screen-lg">
-      <a href="/dashboard/new" class="btn">Create New Post</a>
-    </div>
+<div class="fixed bottom-0 left-0 right-0 flex justify-center p-4 bg-gray-100">
+  <div class="max-w-screen-lg">
+    <a href="/dashboard/new" class="btn">Create New Post</a>
   </div>
+</div>

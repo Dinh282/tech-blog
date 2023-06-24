@@ -45,10 +45,15 @@ Video Demo of Application:
 ![Screenshot of <placeholder>](./assets/)
 
 ## Credits:
+1. https://www.npmjs.com/package/express-handlebars (Help with express handlebars)
 
+2. https://expressjs.com/en/resources/middleware/session.html (Help with express sessions)
 
+3. https://www.section.io/engineering-education/session-management-in-nodejs-using-expressjs-and-express-session/ ( Help with understanding sessions)
 
-4. Instructor, TAs, and classmates.
+4. https://tailwindcss.com/docs/resize (Help with Tailwind framework)
+
+5. Instructor, TAs, and classmates.
 
 ## Questions
 Feel free to contact me at nguyen_dinh282@yahoo.com for additional information.  

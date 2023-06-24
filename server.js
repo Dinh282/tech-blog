@@ -11,9 +11,11 @@ const helpers = require('./utils/helpers');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+const oneDay = 1000*60*60*24;
+
 const sess = {
   secret: process.env.SESS_SECRET,
-  cookie: {},
+  cookie: {maxAge: oneDay},
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({

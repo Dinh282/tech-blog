@@ -11,13 +11,11 @@ const helpers = require('./utils/helpers');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-const oneDay = 1000*60*60*24;
-
 const sess = {
-  secret: process.env.SESS_SECRET,
-  cookie: {maxAge: oneDay},
-  resave: false,
-  saveUninitialized: true,
+  secret: process.env.SESS_SECRET, //secret is used to sign session ID cookie. This allows server to verify authenticity of the session ID.
+  cookie: {},
+  resave: false, //session will not be saved to session store on every request
+  saveUninitialized: true, //uninitialized session will be saved to session store
   store: new SequelizeStore({
     db: sequelize,
   }),

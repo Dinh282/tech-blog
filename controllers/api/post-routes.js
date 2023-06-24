@@ -6,11 +6,10 @@ const withAuth = require('../../utils/auth');
 //Api endpoint to create a new post
 router.post('/', withAuth, async (req, res) => {
   try {
-    const newPost = await Post.create({
-      ...req.body,
+    const newPost = await Post.create({ //craete method saves the new post to db.
+      ...req.body,   //we spread the properties of the req.body
       user_id: req.session.user_id,
     });
-
     res.status(200).json(newPost);
   } catch (err) {
     res.status(400).json(err);
@@ -20,14 +19,15 @@ router.post('/', withAuth, async (req, res) => {
 //Api endpoint to delete a post
 router.delete('/:id', withAuth, async (req, res) => {
   try {
-    const postData = await Post.destroy({
+    const postData = await Post.destroy({//destroy() method deletes post(where id = req.params.id and user_id = 
+      //req.session.user_id) from db.
       where: {
         id: req.params.id,
         user_id: req.session.user_id,
       },
     });
 
-    if (!postData) {
+    if (!postData) { //if post does not existsin db return 404. 
       res.status(404).json({ message: 'No post found with this id!' });
       return;
     }
@@ -42,7 +42,7 @@ router.delete('/:id', withAuth, async (req, res) => {
 //withAuth middle is for authenticating the request
 router.put('/:id', withAuth, async (req, res) =>{
   try {
-    //.update is a sequelize method used to update records in the database
+    //update() method is a sequelize method used to update records in the database
     const updatedPost = await Post.update(req.body, {
       //We want to update a post with matching id and user_id. id we get from the URL parameter and user_id from the session.
       where: {

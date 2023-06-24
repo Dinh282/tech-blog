@@ -7,8 +7,7 @@ const withAuth = require('../utils/auth');
 // GET all posts for homepage
 router.get('/', async (req, res) => {
   try {
-    
-    const dbPostData = await Post.findAll({
+    const dbPostData = await Post.findAll({ //findAll() method to get all posts from db of Post model.
       include: [
         {
           model: User,
@@ -19,11 +18,9 @@ router.get('/', async (req, res) => {
       // base on their createdAt in descending order. We do this because we want the latest posts to appear first on the list at the homepage 
       //screen
     });
-
     const posts = dbPostData.map((post) =>
-      post.get({ plain: true })
+      post.get({ plain: true }) //data serialization. 
     );
-
     const isHomePage = true; // Set the isHomePage variable to true for the main.handlebars template.
 
     res.render('homepage', {
@@ -36,9 +33,6 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-
-
 
 
 // GET dashboard page
@@ -58,7 +52,7 @@ router.get('/dashboard', async (req, res) => {
       // Render the dashboard template with the posts data
       res.render('dashboard', { loggedIn: true, posts });
     } else {
-      // User is not logged in, redirect them to the login page
+      // If user is not logged in, redirect them to the login page
       res.redirect('/login');
     }
   } catch (err) {
@@ -66,7 +60,6 @@ router.get('/dashboard', async (req, res) => {
     res.status(500).json(err);
   }
 });
-
 
 //GET Render the edit form
 router.get('/dashboard/edit/:id', async (req, res) => {
@@ -82,7 +75,6 @@ router.get('/dashboard/edit/:id', async (req, res) => {
     //This will filter out Sequelized-specific metadata and methods.
     const post = postData.get({plain: true});
 
-    console.log(post)
     if (!post) {
       res.status(404).json({ message: 'No post found with this id!' });
       return;
@@ -97,19 +89,14 @@ router.get('/dashboard/edit/:id', async (req, res) => {
 });
 
 
-
-// GET Render the new post form
-router.get('/dashboard/new', (req, res) => {
-  if (req.session.loggedIn){
+// GET route to render the new post form
+router.get('/dashboard/new', withAuth, (req, res) => {//withAuth is a middleware or helper function
+  //that ensures that only authenticated user can access the route. withAuth is defined in auth.js.
   res.render('post', {loggedIn: true});
-  return;
-  }
-  res.render('login')
 });
 
 
-
-// GET signup page
+// GET route to render signup page
 router.get('/signup', (req, res) => {
   if (req.session.loggedIn) {
     res.redirect('/dashboard');
@@ -118,19 +105,14 @@ router.get('/signup', (req, res) => {
   res.render('signup'); // Render the signup page template
 });
 
-
-
-
 // Get route to see if user is logged in, if not show them the login page.
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
     res.redirect('/dashboard');
     return;
   }
-
   res.render('login');
 });
-
 
 
 module.exports = router;

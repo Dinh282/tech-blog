@@ -5,14 +5,6 @@ const { User } = require('../../models');
 router.post('/', async (req, res) => {
   try {
 
-    const existingUser = await User.findOne({//findOne() method used on User model to find a user in db(where username = req.body.username)
-      where: { username: req.body.username }
-  })
-
-  if (existingUser) { //If user is found, then username is already taken.
-    return res.status(400).json({ message: 'Username is already taken. Please choose a different username.'})
-  }
-    //if !existingUser, process to create a new user with create() method.
     const dbUserData = await User.create({
       username: req.body.username,
       password: req.body.password,
@@ -20,14 +12,13 @@ router.post('/', async (req, res) => {
 
     // saves user's session data
     req.session.save(() => {
-      req.session.loggedIn = true;
-      req.session.user_id = dbUserData.id;
+    req.session.loggedIn = true;
+    req.session.user_id = dbUserData.id;
 
       res.status(200).json(dbUserData);
     });
   } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
+    res.status(500).json({ message: 'Username is already taken. Please choose a different username.'});
   }
 });
 

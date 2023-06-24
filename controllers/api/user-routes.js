@@ -1,9 +1,18 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
-// CREATE new user
+// CREATE new user on the server side
 router.post('/', async (req, res) => {
   try {
+
+    const existingUser = await User.findOne({
+      where: { username: req.body.username }
+  })
+
+  if (existingUser) {
+    return res.status(400).json({ message: 'Username is already taken. Please choose a different username.'})
+  }
+
     const dbUserData = await User.create({
       username: req.body.username,
       password: req.body.password,

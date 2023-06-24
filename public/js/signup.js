@@ -4,6 +4,10 @@ const signupFormHandler = async (event) => {
     const username = document.querySelector('#username-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
   
+    if(!username || !password){
+        alert("You must enter a username and password for your account.")
+    }
+
     if (username && password) {
       const response = await fetch('/api/users', {
         method: 'POST',

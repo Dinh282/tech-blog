@@ -4,7 +4,11 @@ const newPostHandler = async (event) => {
     const title = document.querySelector('#post-name').value.trim();
     const content = document.querySelector('#post-desc').value.trim();
   
-   
+    
+    if(!title || !content){
+        alert("You must provide a title and content for your post.")
+    }
+
     if (title && content) {
       const response = await fetch(`/api/posts`, {
         method: 'POST',

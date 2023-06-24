@@ -1,7 +1,16 @@
-{{#each posts}}
-  <div class="post-item">
-    <h2>{{title}}</h2>
-    <p>{{content}}</p>
-    <p>Author: {{user.username}}</p>
-  </div>
-{{/each}}
+<div class="flex-grow">
+  {{#each posts}}
+  <div class="max-w-screen-2lg mx-auto p-2">
+    <div class="post-item bg-stone-900 rounded shadow-md p-1">
+      <div class="flex items-center justify-between text-xl p-2">
+        <h2 class="flex-1">{{title}}</h2>
+        <p>Created by {{user.username}} on {{format_date createdAt}}</p>
+      </div>
+
+      <div class="bg-blue-200 h-32">
+        <p class="text-stone-900 text-lg">{{content}}</p>
+      </div>
+    </div>
+  </div>  
+  {{/each}}
+</div>

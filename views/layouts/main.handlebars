@@ -15,9 +15,9 @@
 </head>
 
 <body>
-    <main class="bg-blue-200 h-screen">
-    <div class="bg-stone-900 p-4">
-        <nav>
+    <main class="bg-blue-200 min-h-screen">
+    <div class="bg-stone-900 p-6">
+        <nav class="text-2xl space-x-4">
             <a href="/">Home</a>
             <a href="{{#if loggedIn}}/dashboard{{else}}/login{{/if}}">Dashboard</a>
             {{#if loggedIn}}
@@ -28,7 +28,7 @@
         </nav>
 
         <header>
-            <h1>{{#if loggedIn}}{{#if isHomePage}}The Tech Blog{{else}}Dashboard{{/if}}{{else}}The Tech Blog{{/if}}</h1>
+            <h1 class="text-5xl bg-blue-200 text-stone-900 inline-block rounded p-2 mt-8 mb-8 shadow-xl shadow-gray-100 transform translate-x-6">{{#if loggedIn}}{{#if isHomePage}}The Tech Blog{{else}}Dashboard{{/if}}{{else}}The Tech Blog{{/if}} </h1>
         </header>
     </div>
     

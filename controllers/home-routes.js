@@ -15,6 +15,9 @@ router.get('/', async (req, res) => {
           attributes: ['username'],
         },
       ],
+      order: [['createdAt', 'DESC']], // This order options added to findALL method is to specify the order of the post
+      // base on their createdAt in descending order. We do this because we want the latest posts to appear first on the list at the homepage 
+      //screen
     });
 
     const posts = dbPostData.map((post) =>

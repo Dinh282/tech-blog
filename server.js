@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 3001;
 
 const sess = {
   secret: process.env.SESS_SECRET, //secret is used to sign session ID cookie. This allows server to verify authenticity of the session ID.
-  cookie: {},
+  cookie: {maxAge:600000},
   resave: false, //session will not be saved to session store on every request
   saveUninitialized: true, //uninitialized session will be saved to session store
   store: new SequelizeStore({

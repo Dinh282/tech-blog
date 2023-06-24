@@ -28,7 +28,7 @@
         </nav>
 
         <header>
-            <h1>{{#if loggedIn}}Dashboard{{else}}The Tech Blog{{/if}}</h1>
+            <h1>{{#if loggedIn}}{{#if isHomePage}}The Tech Blog{{else}}Dashboard{{/if}}{{else}}The Tech Blog{{/if}}</h1>
         </header>
     </div>
     

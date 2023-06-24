@@ -21,9 +21,12 @@ router.get('/', async (req, res) => {
       post.get({ plain: true })
     );
 
+    const isHomePage = true; // Set the isHomePage variable to true for the main.handlebars template.
+
     res.render('homepage', {
       posts,
       loggedIn: req.session.loggedIn,
+      isHomePage,
     });
   } catch (err) {
     console.log(err);
@@ -61,15 +64,6 @@ router.get('/dashboard', async (req, res) => {
   }
 });
 
-
-// GET Render the edit form
-// router.get('/dashboard/edit/:id', (req, res) => {
-//   if (req.session.loggedIn){
-//   res.render('edit', {loggedIn: true});
-//   return;
-//   }
-//   res.render('login')
-// });
 
 //GET Render the edit form
 router.get('/dashboard/edit/:id', async (req, res) => {

@@ -62,6 +62,44 @@ router.get('/dashboard', async (req, res) => {
 });
 
 
+// GET Render the edit form
+// router.get('/dashboard/edit/:id', (req, res) => {
+//   if (req.session.loggedIn){
+//   res.render('edit', {loggedIn: true});
+//   return;
+//   }
+//   res.render('login')
+// });
+
+//GET Render the edit form
+router.get('/dashboard/edit/:id', async (req, res) => {
+  try {
+    if (!req.session.loggedIn) {
+      res.render('login');
+      return;
+    }
+
+    const postId = req.params.id;
+    const postData = await Post.findByPk(postId);
+    //Here we serialize the data of postData to get only what we need use sequelize command {plain:true}. 
+    //This will filter out Sequelized-specific metadata and methods.
+    const post = postData.get({plain: true});
+
+    console.log(post)
+    if (!post) {
+      res.status(404).json({ message: 'No post found with this id!' });
+      return;
+    }
+    
+    //Pass on post data found by Id (data is used to inject into edit.handlebars template)
+    res.render('edit', { loggedIn: true, post });
+    
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
 
 // GET Render the new post form
 router.get('/dashboard/new', (req, res) => {
@@ -95,5 +133,7 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
+
+
 
 module.exports = router;

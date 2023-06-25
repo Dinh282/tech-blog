@@ -1,6 +1,5 @@
-
 const router = require('express').Router();
-const { Post, User } = require('../models');
+const { Post, User, Comment } = require('../models');
 // Import the custom middleware
 const withAuth = require('../utils/auth');
 
@@ -29,7 +28,6 @@ router.get('/', async (req, res) => {
       isHomePage,
     });
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });
@@ -61,7 +59,7 @@ router.get('/dashboard', async (req, res) => {
   }
 });
 
-//GET Render the edit form
+//GET route to Render the edit form for a post.
 router.get('/dashboard/edit/:id', async (req, res) => {
   try {
     if (!req.session.loggedIn) {
@@ -112,6 +110,61 @@ router.get('/login', (req, res) => {
     return;
   }
   res.render('login');
+});
+
+
+//GET route to render page to leave comment on selected post
+router.get('/comments/new/:id', withAuth, async (req, res) => {//withAuth is a middleware or helper function
+  //that ensures that only authenticated user can access the route. withAuth is defined in auth.js.
+try{
+    const postId = req.params.id;
+    const postData = await Post.findByPk(postId, 
+    { include:[
+      {
+        model: User,
+        attributes: ['username'],
+      },
+    ], 
+  });
+    //Here we serialize the data of postData to get only what we need use sequelize command {plain:true}. 
+    //This will filter out Sequelized-specific metadata and methods.
+    const post = postData.get({plain: true});
+
+    if (!post) {
+      res.status(404).json({ message: 'No post found with this id!' });
+      return;
+    }
+    //Pass on post data found by Id (data is used to inject into ecooment-form.handlebars template)
+    res.render('comment-form', { loggedIn: true, post });
+  
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// GET route to render the comment page for a specific post
+router.get('/comments/:id', withAuth, async (req, res) => {
+  try{
+    const postId = req.params.id;
+    const postData = await Post.findByPk(postId, {
+      include: 
+        {model: Comment, include: {model: User} }, //We include Comment and User model to use their data to inject into template
+    });
+    //Here we serialize the data of postData to get only what we need use sequelize command {plain:true}. 
+    //This will filter out Sequelized-specific metadata and methods.
+    const post = postData.get({plain: true});
+
+    if (!post) {
+      res.status(404).json({ message: 'No post found with this id!' });
+      return;
+    }
+    //Pass on post data found by Id (data is used to inject into comment-page.handlebars template)
+    res.render('comment-page', { loggedIn: true, post });
+
+  } catch (err) {
+    res.status(500).json(err);
+  }
+
 });
 
 

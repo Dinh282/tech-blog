@@ -1,16 +1,21 @@
 <div class="flex-grow">
   {{#each posts}}
-  <div class="max-w-screen-2lg mx-auto p-2">
-    <div class="post-item bg-stone-900 rounded shadow-md p-1">
-      <div class="flex items-center justify-between text-xl p-2">
-        <h2 class="flex-1">{{title}}</h2>
-        <p>Created by {{user.username}} on {{format_date createdAt}}</p>
+      <a href="/comments/new/{{id}}">
+
+      <div class="max-w-screen-2lg mx-auto p-2">
+        <div class="post-item bg-stone-900 rounded p-1 hover:bg-sky-950 hover:cursor-pointer">
+          <div class="flex items-center justify-between text-xl p-2">
+            <h2 class="flex-1">{{title}}</h2>
+            <p>Created by {{user.username}} on {{format_date createdAt}}</p>
+          </div>
+          <div class="bg-blue-200 h-32">
+            <p class="text-stone-900 text-lg">{{content}}</p>
+          </div>
+        </div>
       </div>
 
-      <div class="bg-blue-200 h-32">
-        <p class="text-stone-900 text-lg">{{content}}</p>
-      </div>
-    </div>
-  </div>  
+    </a>
   {{/each}}
 </div>
+
+

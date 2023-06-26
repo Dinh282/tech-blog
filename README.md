@@ -53,7 +53,7 @@ open it with VS Code.
 - After signing up you will be authorized to create, view, edit, and delete your posts.
 - On the home page, you will see all of the posts ever published on the site.
 - You can click on a post to leave a comment if you are logged in.
-
+- If you are idle (no mouse movements or keypresses while on the site) for more than 5 minutes, you will be logged out. 
 
 - Alternatively, you can view the demo video or use test the site by visiting the live deployed site at:(ADD LINK TO SITE DEPLOYED USING HEROKU HERE).
 
@@ -63,7 +63,7 @@ Video Demo of Application:
 
 
 
-The following are screenshots the application:
+The following are screenshots of the application:
 
 Screenshot of the Homepage:
 

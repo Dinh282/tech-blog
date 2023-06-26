@@ -52,6 +52,7 @@ open it with VS Code.
 - Once you are on the main page of the website you can create your account.
 - After signing up you will be authorized to create, view, edit, and delete your posts.
 - On the home page, you will see all of the posts ever published on the site.
+- You can click on a post to leave a comment if you are logged in.
 
 
 - Alternatively, you can view the demo video or use test the site by visiting the live deployed site at:(ADD LINK TO SITE DEPLOYED USING HEROKU HERE).
@@ -62,18 +63,44 @@ Video Demo of Application:
 
 
 
- Screenshots of the Application:
+The following are screenshots the application:
 
+Screenshot of the Homepage:
 
-![Screenshot of <placeholder>](./assets/)
+![Screenshot of Homepage](./assets/homepage-not-loggedin.jpg)
 
-:
+Screenshot of the Login Page:
 
-![Screenshot of <placeholder>](./assets/)
+![Screenshot of the Login Screen](./assets/login-screen.jpg)
 
-:
+Screenshot of the Sign-Up Page:
 
-![Screenshot of <placeholder>](./assets/)
+![Screenshot of Sign Up Page](./assets/signup-screen.jpg)
+
+Screenshot of the Dashboard Page:
+
+![Screenshot of the Dashboard Page](./assets/dashboard-screen.jpg)
+
+Screenshot of the Page to Create a Post:
+
+![Screenshot of the Page to Create a Post](./assets/create-post-screen.jpg)
+
+Screenshot of the Page to Edit a Post:
+
+![Screenshot of the Page to Edit a Post](./assets/edit-post-page.jpg)
+
+Screenshot of the Homepage With Posts: 
+
+![Screenshot of the Homepage With Posts](./assets/homepage-with-posts.jpg)
+
+Screenshot of the Page to a Leave a Comment:
+
+![Screenshot of the Page to a Leave a Comment](./assets/leave-comment-page.jpg)
+
+Screenshot of the Comment Page:
+
+![Screenshot of the Comment Page](./assets/comment-page.jpg)
+
 
 ## Credits:
 1. https://www.npmjs.com/package/express-handlebars (Help with express handlebars)
@@ -90,7 +117,15 @@ Video Demo of Application:
 
 7. https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch(Help with fetch API)
 
-8. Instructor, TAs, and classmates.
+8. https://devcenter.heroku.com/articles/jawsdb#:~:text=The%20JAWSDB_URL%20config%20variable%20will,the%20heroku%20config%3Aget%20command. (Help with deploying the application to Heroku)
+
+9. https://www.youtube.com/watch?v=1G6e1cqqz3w&list=LL&index=1 (Help with deploying the application to Heroku)
+
+10. https://www.youtube.com/watch?v=Rz886HkV1j4&list=LL&index=2 (Help with deploying the application to Heroku)
+
+11. https://www.youtube.com/watch?v=AQp7b-1356k&list=LL&index=4 (Help with deploying the application to Heroku)
+
+12. Instructor, TAs, and classmates.
 
 ## Questions
 Feel free to contact me at nguyen_dinh282@yahoo.com for additional information.  

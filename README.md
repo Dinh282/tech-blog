@@ -55,11 +55,15 @@ open it with VS Code.
 - You can click on a post to leave a comment if you are logged in.
 
 
-- Alternatively, you can view the demo video or use test the site by visiting the live deployed site at:(ADD LINK TO SITE DEPLOYED USING HEROKU HERE).
+- Alternatively, you can view the demo video or use test the site by visiting the live deployed site at: https://dn-tech-blog-91088954e7f1.herokuapp.com/.
 
 ---
 
 Video Demo of Application:
+
+
+
+https://github.com/Dinh282/tech-blog/assets/112836220/14a0e0d1-98fc-4a49-a71a-1ba4b4e13250
 
 
 
